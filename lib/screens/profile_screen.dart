@@ -1,7 +1,7 @@
 
+import 'package:employee_attendance_system/screens/splash_screen.dart';
 import 'package:employee_attendance_system/services/auth_service.dart';
 import 'package:employee_attendance_system/services/db_service.dart';
-import 'package:employee_attendance_system/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:employee_attendance_system/models/department_model.dart';
@@ -33,6 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen>{
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+
               Container(
                 margin: const EdgeInsets.only(top: 80,),
                 height: 100,
@@ -88,17 +89,20 @@ class _ProfileScreenState extends State<ProfileScreen>{
                 ),
               ),
               const SizedBox(height: 20,),
-              SizedBox(
-                width: 200,
-                height: 50,
-                child: ElevatedButton(
+              Container(
+                margin: const EdgeInsets.only(top: 20),
+                alignment: Alignment.bottomCenter,
+
+                child: TextButton.icon(
                   style: MyRedButtonStyle(),
-                  child: const Text("SignOut",style: TextStyle(fontSize: 25),),
-                  onPressed: (){
-                   Provider.of<AuthService>(context,listen: false).signOut();
-                  },
-                ),
-              )
+                    onPressed: () {
+                      Provider.of<AuthService>(context, listen: false)
+                          .signOut();
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=> const SplashScreen()));
+                    },
+                    icon: const Icon(Icons.logout,color:Colors.white),
+                    label: const Text("Sign Out",style: TextStyle(color: Colors.white, fontSize: 20),)),
+              ),
 
             ],
           ),

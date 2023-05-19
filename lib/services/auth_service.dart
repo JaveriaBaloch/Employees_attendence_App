@@ -15,7 +15,7 @@ class AuthService extends ChangeNotifier{
     notifyListeners();
   }
 
-  Future registerEmployee( String email, String password, BuildContext context) async{
+  Future registerEmployee( String email, String password, BuildContext context)async{
     try {
       setIsLoading = true;
       if (email.isEmpty || password.isEmpty) {
@@ -26,7 +26,7 @@ class AuthService extends ChangeNotifier{
         );
         if(response != null){
           await _dbService.insertNewUserData(email, response.user?.id);
-          Utils.showSnackBar("Successfully Registered!", context, color: Colors.green);
+          Utils.showSnackBar("Successfully Registered!",context,color: Colors.green);
           await loginEmployee(email, password, context);
           Navigator.pop(context);
         }
@@ -55,7 +55,7 @@ class AuthService extends ChangeNotifier{
       print(error);
     }
   }
-  Future signOut()async{
+  Future signOut() async {
     await _supabase.auth.signOut();
     notifyListeners();
   }

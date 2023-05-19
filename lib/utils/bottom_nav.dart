@@ -55,7 +55,7 @@ class _BottomNavState extends State<BottomNav>{
                         child: Center(
                           child: FaIcon(
                             navigationIcon[i],
-                            color: i==widget.currentIndex?  Color(0xffFF004F): Colors.black54,
+                            color: i==widget.currentIndex?  const Color(0xffFF004F): Colors.black54,
                             size: i==widget.currentIndex? 30:26,
                           ),
                         )
